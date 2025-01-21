@@ -1,4 +1,4 @@
-package enterprise.general_back_api.controller;
+package enterprise.general_back_api.auth;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.HttpHeaders;
@@ -8,9 +8,6 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import enterprise.general_back_api.dto.LoginRequest;
-import enterprise.general_back_api.dto.RegisterRequest;
-import enterprise.general_back_api.dto.TokenResponse;
 import enterprise.general_back_api.service.AuthService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -30,7 +27,7 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<TokenResponse> login(@Valid @RequestBody(required = true) LoginRequest request) {
-        TokenResponse token = authService.login(request);
+        TokenResponse token = authService.authenticate(request);
         return ResponseEntity.ok(token);
     }
 

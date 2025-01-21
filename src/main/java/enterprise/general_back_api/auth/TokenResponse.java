@@ -1,4 +1,4 @@
-package enterprise.general_back_api.dto;
+package enterprise.general_back_api.auth;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

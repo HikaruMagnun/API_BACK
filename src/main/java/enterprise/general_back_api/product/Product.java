@@ -1,4 +1,4 @@
-package enterprise.general_back_api.entity;
+package enterprise.general_back_api.product;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;

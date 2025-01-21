@@ -1,4 +1,4 @@
-package enterprise.general_back_api.util.user_auth;
+package enterprise.general_back_api.user;
 
 public enum Permission {
 

@@ -1,9 +1,9 @@
 
-package enterprise.general_back_api.entity;
+package enterprise.general_back_api.user;
 
 import java.util.List;
 
-import enterprise.general_back_api.util.user_auth.Role;
+import enterprise.general_back_api.token.Token;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -72,8 +72,8 @@ import lombok.Setter;
  * <li>{@link lombok.Setter}</li>
  * </ul>
  * 
- * @see enterprise.general_back_api.util.user_auth.Role
- * @see enterprise.general_back_api.entity.Token
+ * @see enterprise.general_back_api.user.Role
+ * @see enterprise.general_back_api.token.Token
  */
 
 @Entity
@@ -86,7 +86,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long ID;
+    private Long ID;
 
     @Column(nullable = false)
     @NotBlank

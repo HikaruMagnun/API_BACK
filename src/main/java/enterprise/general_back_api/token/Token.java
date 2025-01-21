@@ -1,5 +1,6 @@
-package enterprise.general_back_api.entity;
+package enterprise.general_back_api.token;
 
+import enterprise.general_back_api.user.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;

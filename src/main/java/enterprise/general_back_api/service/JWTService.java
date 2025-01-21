@@ -8,7 +8,7 @@ import javax.crypto.SecretKey;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
-import enterprise.general_back_api.entity.User;
+import enterprise.general_back_api.user.User;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -37,7 +37,6 @@ public class JWTService {
 
     private String buildToken(User user, long expiration) {
         return Jwts.builder()
-                .id(Long.toString(user.getID()))
                 .claim("username", user.getUsername())
                 .subject(user.getEmail())
                 .issuedAt(Date.from(Instant.now()))
