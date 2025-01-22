@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import enterprise.general_back_api.service.AuthService;
+import enterprise.general_back_api.auth.dto.AuthLoginRequest;
+import enterprise.general_back_api.auth.dto.AuthRegisterRequest;
+import enterprise.general_back_api.auth.dto.AuthResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 
@@ -20,20 +22,22 @@ public class AuthController {
     private final AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<TokenResponse> register(@Valid @RequestBody(required = true) RegisterRequest request) {
-        TokenResponse token = authService.register(request);
-        return ResponseEntity.ok(token);
+    public ResponseEntity<AuthResponse> register(@Valid @RequestBody(required = true) AuthRegisterRequest request) {
+        AuthResponse authresponse = authService.register(request);
+        return ResponseEntity.ok(authresponse);
     }
 
-    @PostMapping("/login")
-    public ResponseEntity<TokenResponse> login(@Valid @RequestBody(required = true) LoginRequest request) {
-        TokenResponse token = authService.authenticate(request);
-        return ResponseEntity.ok(token);
+    @PostMapping("/authenticate")
+    public ResponseEntity<AuthResponse> authenticate(@Valid @RequestBody(required = true) AuthLoginRequest request) {
+        AuthResponse authresponse = authService.authenticate(request);
+        return ResponseEntity.ok(authresponse);
     }
 
-    @PostMapping("/refresh")
-    public TokenResponse refreshToken(@RequestHeader(HttpHeaders.AUTHORIZATION) String authentication) {
-        return authService.refresh(authentication);
+    @PostMapping("/refresh-token")
+    public ResponseEntity<AuthResponse> refreshToken(
+            @RequestHeader(HttpHeaders.AUTHORIZATION) String authenticationHeader) {
+        AuthResponse authResponse = authService.refresh(authenticationHeader);
+        return ResponseEntity.ok(authResponse);
     }
 
 }
