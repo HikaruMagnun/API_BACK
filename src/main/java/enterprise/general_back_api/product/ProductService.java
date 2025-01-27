@@ -1,12 +1,10 @@
-package enterprise.general_back_api.service;
+package enterprise.general_back_api.product;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import enterprise.general_back_api.product.Product;
-import enterprise.general_back_api.product.ProductRepository;
 import lombok.RequiredArgsConstructor;
 
 @Service
